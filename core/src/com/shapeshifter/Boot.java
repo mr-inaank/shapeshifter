@@ -15,8 +15,8 @@ import com.badlogic.gdx.Game;
 public class Boot extends Game {
 
 	public static Boot INSTANCE;
-	private int screenWidth, screenHeight;
 	private OrthographicCamera camera;
+	private GameWorld gameworld;
 
 
 	public Boot() {
@@ -29,19 +29,14 @@ public class Boot extends Game {
 	
 	@Override
 	public void create () {
-		this.screenWidth = Gdx.graphics.getWidth();
-		this.screenHeight = Gdx.graphics.getHeight();
+		this.gameworld = new GameWorld();	//for testing purposes. REMOVE THIS - should be handled
 		this.camera = new OrthographicCamera();
-		this.camera.setToOrtho(false, screenWidth, screenHeight);
-		setScreen(new GameScreen(camera));
+		this.camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		setScreen(new GameScreen(camera, gameworld));
 
 	}
 
-	public int getScreenWidth() {
-		return screenWidth;
-	}
-
-	public int getScreenHeight() {
-		return screenHeight;
+	public OrthographicCamera getCamera() {
+		return this.camera;
 	}
 }
