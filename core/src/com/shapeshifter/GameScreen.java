@@ -40,8 +40,8 @@ public class GameScreen extends ScreenAdapter {
         gameworld.gameLoop();
 
         camera.zoom = 2;
-        camera.position.x = gameworld.actors.get(0).getPosX();
-        camera.position.y = gameworld.actors.get(0).getPosY();
+        camera.position.x = gameworld.player.getPosX();
+        camera.position.y = gameworld.player.getPosY();
         camera.update();
         batch.setProjectionMatrix(camera.combined);
 
@@ -55,7 +55,7 @@ public class GameScreen extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-        batch.draw(gameworld.background, -3000, -2000, 1920*5, 1080*5);
+        batch.draw(gameworld.background, 0, 0, 1920*5, 1080*5);
         for (Actor i : gameworld.actors) {
             batch.draw(i.getTexture(),
                     i.getPosX(), i.getPosY(),

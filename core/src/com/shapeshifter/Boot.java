@@ -24,13 +24,12 @@ public class Boot extends Game {
 		INSTANCE = this;
 		//this.camera.position.set(new Vector3(screenWidth/2, screenHeight/2, 0));
 		//this.batch = new SpriteBatch();
-		//this.world = new World(new Vector2(0, 0 ), false);
 		//this.box2DDebugRenderer = new Box2DDebugRenderer();
 	}
 	
 	@Override
 	public void create () {
-		this.gameworld = new GameWorld();	//for testing purposes. REMOVE THIS - should be handled
+		this.gameworld = new GameWorld();
 		this.camera = new OrthographicCamera();
 		this.camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
