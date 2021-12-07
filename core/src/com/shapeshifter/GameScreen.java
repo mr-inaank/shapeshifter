@@ -20,9 +20,6 @@ public class GameScreen extends ScreenAdapter {
     private SpriteBatch batch;
     private Box2DDebugRenderer box2DDebugRenderer;
 
-    private World world;                            //ARE WE GONNA USE THIS?
-
-
     //shape sprites
     private Texture square = new Texture("square.png");
     private Texture triangle = new Texture("triangle.png");
@@ -30,13 +27,7 @@ public class GameScreen extends ScreenAdapter {
     public GameScreen(OrthographicCamera camera, GameWorld gameworld) {
         this.gameworld = gameworld;
         this.camera = camera;
-
         this.batch = new SpriteBatch();
-        this.box2DDebugRenderer = new Box2DDebugRenderer();
-
-        //These lines don't do anything
-        this.camera.position.set(new Vector3(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight(), 0));
-        this.world = new World(new Vector2(0, 0), false);
 
     }
 
@@ -46,7 +37,6 @@ public class GameScreen extends ScreenAdapter {
     }
 
     public void update() {
-        world.step(1/60f, 6, 2); //what do iteration variables do? Are we even going to use this world class?
         gameworld.gameLoop();
 
         camera.zoom = 2;
