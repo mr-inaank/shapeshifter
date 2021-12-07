@@ -1,9 +1,13 @@
 package com.shapeshifter;
 
+import com.badlogic.gdx.graphics.Texture;
+
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class GameWorld {
     public ArrayList<Actor> actors = new ArrayList<Actor>();
+    public Texture background= new Texture("background.jpg");
 
     public GameWorld() {
         this.make();

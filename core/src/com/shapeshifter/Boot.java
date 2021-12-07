@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 
 public class Boot extends Game {
 
@@ -32,11 +33,8 @@ public class Boot extends Game {
 		this.gameworld = new GameWorld();	//for testing purposes. REMOVE THIS - should be handled
 		this.camera = new OrthographicCamera();
 		this.camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
 		setScreen(new GameScreen(camera, gameworld));
 
-	}
-
-	public OrthographicCamera getCamera() {
-		return this.camera;
 	}
 }
