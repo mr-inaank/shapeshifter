@@ -10,7 +10,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
 		config.title = "ShapeShifter";
-		config.vSyncEnabled = true;
+		config.vSyncEnabled = false;
 		config.width = 1000;
 		config.height = 1000;
 		config.resizable = true;

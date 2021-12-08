@@ -2,6 +2,7 @@ package com.shapeshifter;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -18,17 +19,17 @@ public class Boot extends Game {
 	public static Boot INSTANCE;
 	private OrthographicCamera camera;
 	private GameWorld gameworld;
+	private Sound music;
 
 
 	public Boot() {
 		INSTANCE = this;
-		//this.camera.position.set(new Vector3(screenWidth/2, screenHeight/2, 0));
-		//this.batch = new SpriteBatch();
-		//this.box2DDebugRenderer = new Box2DDebugRenderer();
 	}
 	
 	@Override
 	public void create () {
+		music = Gdx.audio.newSound(Gdx.files.internal("track.ogg"));
+		music.loop();
 		this.gameworld = new GameWorld();
 		this.camera = new OrthographicCamera();
 		this.camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());

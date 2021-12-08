@@ -1,17 +1,13 @@
 package com.shapeshifter;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.shapeshifter.Actor.Actor;
 
 public class GameScreen extends ScreenAdapter {
 
@@ -27,6 +23,7 @@ public class GameScreen extends ScreenAdapter {
     public GameScreen(OrthographicCamera camera, GameWorld gameworld) {
         this.gameworld = gameworld;
         this.camera = camera;
+        camera.zoom = 2;
         this.batch = new SpriteBatch();
 
     }
@@ -39,7 +36,7 @@ public class GameScreen extends ScreenAdapter {
     public void update() {
         gameworld.gameLoop();
 
-        camera.zoom = 2;
+        //camera.zoom = 2;
         camera.position.x = gameworld.player.getPosX();
         camera.position.y = gameworld.player.getPosY();
         camera.update();
