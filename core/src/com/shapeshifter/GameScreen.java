@@ -1,6 +1,7 @@
 package com.shapeshifter;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -36,7 +37,10 @@ public class GameScreen extends ScreenAdapter {
     public void update() {
         gameworld.gameLoop();
 
-        //camera.zoom = 2;
+
+        if (Gdx.input.isKeyPressed(Input.Keys.E)) camera.zoom += 0.1;
+        if (Gdx.input.isKeyPressed(Input.Keys.Q) && camera.zoom > 1) camera.zoom -= 0.1;
+
         camera.position.x = gameworld.player.getPosX();
         camera.position.y = gameworld.player.getPosY();
         camera.update();

@@ -40,7 +40,7 @@ public abstract class Actor {
 
 
 
-    //this is a strategy that should override aim() for this actor
+    //this is a strategy that should override aim() for this actor when being controlled by user input
     public void userControl() {
         if (Gdx.input.isKeyPressed(Input.Keys.A)) this.rotation += angularSpeed;
         if (Gdx.input.isKeyPressed(Input.Keys.D)) this.rotation -= angularSpeed;
