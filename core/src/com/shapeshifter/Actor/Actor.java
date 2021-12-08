@@ -31,7 +31,7 @@ public abstract class Actor {
     }
 
     public void move() {
-        this.rotation += angularSpeed;
+//        this.rotation += angularSpeed;
         this.posX += speed * Math.cos(this.rotation * (Math.PI / 180));
         this.posY += speed * Math.sin(this.rotation * (Math.PI / 180));
     }

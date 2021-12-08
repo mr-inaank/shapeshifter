@@ -7,8 +7,8 @@ import com.shapeshifter.Actor.Triangle;
 
 import java.util.ArrayList;
 
-public class GameWorld {
-    public static GameWorld INSTANCE;
+public enum GameWorld {
+    INSTANCE;
     public Texture background= new Texture("background.jpg");
 
 
@@ -16,10 +16,8 @@ public class GameWorld {
     public Actor player;
 
 
-    public GameWorld() {
-        INSTANCE = this;
+    private GameWorld() {
         this.testSpawns();
-
     }
 
 

@@ -30,7 +30,8 @@ public class Boot extends Game {
 	public void create () {
 		music = Gdx.audio.newSound(Gdx.files.internal("track.ogg"));
 		music.loop();
-		this.gameworld = new GameWorld();
+//		this.gameworld = new GameWorld();
+		this.gameworld = GameWorld.INSTANCE;
 		this.camera = new OrthographicCamera();
 		this.camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
