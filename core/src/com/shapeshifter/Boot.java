@@ -29,7 +29,7 @@ public class Boot extends Game {
 	@Override
 	public void create () {
 		music = Gdx.audio.newSound(Gdx.files.internal("track.ogg"));
-		music.loop();
+//		music.loop();
 //		this.gameworld = new GameWorld();
 		this.gameworld = GameWorld.INSTANCE;
 		this.camera = new OrthographicCamera();
