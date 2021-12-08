@@ -17,7 +17,7 @@ public class GameWorld {
     }
 
     public void make() {
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 5000; i++) {
             actors.add(new Actor());
         }
         player = actors.get(0);
