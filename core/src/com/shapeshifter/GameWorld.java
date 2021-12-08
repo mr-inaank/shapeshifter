@@ -25,6 +25,7 @@ public class GameWorld {
 
     public void testSpawns() {
         actors.add(new Square());
+
         for (int i = 0; i < 500; i++) {
             actors.add(new Triangle());
         }

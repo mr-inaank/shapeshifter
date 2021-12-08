@@ -3,6 +3,7 @@ package com.shapeshifter.Actor;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
+import com.shapeshifter.Actor.MovementStrategy.MovementStrategy;
 import com.shapeshifter.GameWorld;
 
 import java.util.Random;
@@ -17,7 +18,9 @@ public abstract class Actor {
     protected float angularSpeed;
     protected Texture texture;
 
-    Random rand = new Random();
+    private MovementStrategy strategy;
+
+    private Random rand = new Random();
 
     public Actor() {
         this.posX = rand.nextInt(1920*5);
@@ -38,8 +41,6 @@ public abstract class Actor {
         if (posX > 1920*5 || posX < 0)  {this.rotation = 180 - this.rotation;}
         if (posY > 1080*5 || posY < 0) {this.rotation = -this.rotation;}
     }
-
-
 
     //this is a strategy that should override aim() for this actor when being controlled by user input
     public void userControl() {
