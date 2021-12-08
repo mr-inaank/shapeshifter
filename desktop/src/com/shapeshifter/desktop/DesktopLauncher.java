@@ -9,11 +9,13 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
+		config.fullscreen = true;
 		config.title = "ShapeShifter";
 		config.vSyncEnabled = false;
 		config.width = 1000;
 		config.height = 1000;
 		config.resizable = true;
+		config.forceExit = true;
 
 		new LwjglApplication(new Boot(), config);
 

@@ -1,14 +1,14 @@
-package com.shapeshifter.Actor.AttackStrategy;
+package com.shapeshifter.Actor.AttackState;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.shapeshifter.Actor.Actor;
 
-public class ChargeAttackStrategy implements AttackStrategy{
+public class ChargeAttackState implements AttackState {
 
     private final Actor source;
     private int duration;
 
-    public ChargeAttackStrategy(Actor source) {
+    public ChargeAttackState(Actor source) {
         this.duration = 0;
         this.source = source;
         source.setTexture(new Texture("triangle_charge.png"));
@@ -21,7 +21,7 @@ public class ChargeAttackStrategy implements AttackStrategy{
 
     @Override
     public void nextStage() {
-        source.setAttack(new SlowAttackStrategy(source));
+        source.setAttack(new SlowAttackState(source));
     }
 
 

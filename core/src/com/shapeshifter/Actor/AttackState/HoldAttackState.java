@@ -1,14 +1,14 @@
-package com.shapeshifter.Actor.AttackStrategy;
+package com.shapeshifter.Actor.AttackState;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.shapeshifter.Actor.Actor;
 
-public class HoldAttackStrategy implements AttackStrategy{
+public class HoldAttackState implements AttackState {
 
     private final Actor source;
     private int duration;
 
-    public HoldAttackStrategy(Actor source) {
+    public HoldAttackState(Actor source) {
         this.duration = 0;
         this.source = source;
         source.setTexture(new Texture("triangle_hold.png"));
@@ -22,7 +22,7 @@ public class HoldAttackStrategy implements AttackStrategy{
     @Override
     public void nextStage() {
         if (duration > 180) {
-            source.setAttack(new ChargeAttackStrategy(source));
+            source.setAttack(new ChargeAttackState(source));
         }
     }
 

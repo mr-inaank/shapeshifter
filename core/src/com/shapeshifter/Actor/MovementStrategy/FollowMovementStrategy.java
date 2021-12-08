@@ -4,8 +4,8 @@ import com.shapeshifter.Actor.Actor;
 
 public class FollowMovementStrategy implements MovementStrategy {
 
-    private Actor source;
-    private Actor target;
+    private final Actor source;
+    private final Actor target;
 
     public FollowMovementStrategy(Actor source, Actor target) {
         this.source = source;
@@ -13,9 +13,7 @@ public class FollowMovementStrategy implements MovementStrategy {
     }
 
     @Override
-    public float getNewSpeed() {
-        return source.getMaxSpeed();
-    }
+    public float getNewSpeed() {return source.getMaxSpeed();}
 
     @Override
     public float getNewAngularSpeed() {

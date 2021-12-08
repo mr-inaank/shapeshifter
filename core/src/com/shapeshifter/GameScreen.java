@@ -37,7 +37,7 @@ public class GameScreen extends ScreenAdapter {
     public void update() {
         gameworld.gameLoop();
 
-
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) Gdx.app.exit();
         if (Gdx.input.isKeyPressed(Input.Keys.E)) camera.zoom += 0.1;
         if (Gdx.input.isKeyPressed(Input.Keys.Q) && camera.zoom > 1) camera.zoom -= 0.1;
 

@@ -1,6 +1,6 @@
-package com.shapeshifter.Actor.AttackStrategy;
+package com.shapeshifter.Actor.AttackState;
 
-public interface AttackStrategy {
+public interface AttackState {
 
     public void tick();
     public void nextStage();
