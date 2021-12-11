@@ -69,5 +69,7 @@ public class GameScreen extends ScreenAdapter {
                     false, false);
         }
         batch.end();
+
+        System.out.println(Gdx.graphics.getFramesPerSecond());
     }
 }
