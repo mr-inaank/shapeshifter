@@ -1,7 +1,7 @@
 package com.shapeshifter.Actor;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.shapeshifter.Actor.AttackState.AttackState;
+import com.shapeshifter.Actor.State.State;
 import com.shapeshifter.Actor.MovementStrategy.MovementStrategy;
 import com.shapeshifter.GameWorld;
 
@@ -21,8 +21,7 @@ public abstract class Actor {
     protected Texture texture;
 
     //Behaviour
-    private MovementStrategy strategy;
-    private AttackState state;
+    private State state;
 
     //RNG
     private static final Random rand = new Random();
@@ -32,31 +31,29 @@ public abstract class Actor {
         this.posX = rand.nextInt(1920 * 5);
         this.posY = rand.nextInt(1080 * 5);
 
-        this.speed = 0;
-        this.maxSpeed = rand.nextInt(15) + 5;
+        this.speed = rand.nextInt(15) + 5;
+        this.maxSpeed = 20;
 
         this.rotation = rand.nextInt(360) + 0.5f; //not whole number to avoid Math.tan failing when at 90 or 270
-        this.angularSpeed = 0;
-        this.maxAngularSpeed = rand.nextInt(4) + 1;
+        this.angularSpeed = rand.nextInt(4) + 1;
+        this.maxAngularSpeed = 5;
     }
 
     //Methods
     public void move() {
-        this.posX += speed * Math.cos(this.rotation * (Math.PI / 180));
-        this.posY += speed * Math.sin(this.rotation * (Math.PI / 180));
-        this.rotation += angularSpeed;
+        if (speed > maxSpeed) speed = maxSpeed;
+        if (angularSpeed > maxAngularSpeed) angularSpeed = maxAngularSpeed;
+
+        posX += speed * Math.cos(this.rotation * (Math.PI / 180));
+        posY += speed * Math.sin(this.rotation * (Math.PI / 180));
+        rotation += angularSpeed;
     }
 
-    public void useSkill() {
+    public void updateState() {
 
-        if (this == GameWorld.INSTANCE.player) return;
+        if (this == GameWorld.INSTANCE.player) return; //REMOVE THIS
 
         state.tick();
-
-        if (rand.nextInt(50) == 1) { //some condition that triggers the skill usage
-            state.nextStage();
-        }
-
     }
 
     //should this be here or somewhere else?
@@ -72,16 +69,15 @@ public abstract class Actor {
     //rename this (and maybe rename move to updatePos or something)
     public void aim() {
 
-        if (strategy != null) {
-            angularSpeed = strategy.getNewAngularSpeed();
-            speed = strategy.getNewSpeed();
-        }
+        angularSpeed = state.getMovestrat().getNewAngularSpeed();
+        speed = state.getMovestrat().getNewSpeed();
+
     }
 
 
     //Getters
-    public AttackState getAttack() {
-        return attack;
+    public State getState() {
+        return state;
     }
 
     public float getPosX() {
@@ -118,16 +114,20 @@ public abstract class Actor {
 
 
     //Setters
-    public void setStrategy(MovementStrategy strategy) {
-        this.strategy = strategy;
-    }
-
-    public void setAttack(AttackState attack) {
-        this.attack = attack;
+    public void setState(State state) {
+        this.state = state;
     }
 
     public void setTexture(Texture texture) {
         this.texture = texture;
+    }
+
+    public void setMaxSpeed(int maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
+
+    public void setMaxAngularSpeed (int maxAngularSpeed) {
+        this.maxAngularSpeed = maxAngularSpeed;
     }
 
 }

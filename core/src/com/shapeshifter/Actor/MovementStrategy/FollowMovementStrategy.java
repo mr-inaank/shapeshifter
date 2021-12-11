@@ -13,7 +13,7 @@ public class FollowMovementStrategy implements MovementStrategy {
     }
 
     @Override
-    public float getNewSpeed() {return source.getMaxSpeed();}
+    public float getNewSpeed() {return source.getSpeed();}
 
     @Override
     public float getNewAngularSpeed() {

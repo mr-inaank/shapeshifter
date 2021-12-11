@@ -14,7 +14,6 @@ public class UserMovementStrategy implements MovementStrategy{
 
     @Override
     public float getNewSpeed() {
-        if (source.getSpeed() == source.getMaxSpeed()) return source.getMaxSpeed();
         if (Gdx.input.isKeyPressed(Input.Keys.W)) return source.getSpeed() + 0.2f;
         if (Gdx.input.isKeyPressed(Input.Keys.S)) return source.getSpeed() - 0.2f;
         return source.getSpeed();
