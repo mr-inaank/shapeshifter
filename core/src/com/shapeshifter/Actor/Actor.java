@@ -14,9 +14,9 @@ public abstract class Actor {
     protected float speed;
     protected float maxSpeed;
 
-    protected float rotation;
-    protected float angularSpeed;
-    protected float maxAngularSpeed;
+    protected double rotation;
+    protected double angularSpeed;
+    protected double maxAngularSpeed;
 
     protected Texture texture;
 
@@ -90,15 +90,15 @@ public abstract class Actor {
         return posY;
     }
 
-    public float getRotation() {
+    public double getRotation() {
         return rotation;
     }
 
-    public float getAngularSpeed() {
+    public double getAngularSpeed() {
         return angularSpeed;
     }
 
-    public float getMaxAngularSpeed() {
+    public double getMaxAngularSpeed() {
         return maxAngularSpeed;
     }
 

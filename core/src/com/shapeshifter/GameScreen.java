@@ -63,7 +63,7 @@ public class GameScreen extends ScreenAdapter {
                     i.getTexture().getWidth()/2, i.getTexture().getHeight()/2,
                     i.getTexture().getWidth(), i.getTexture().getHeight(),
                     0.8f, 0.8f,
-                    i.getRotation(),
+                    (float)i.getRotation(),
                     0, 0,
                     i.getTexture().getWidth(), i.getTexture().getHeight(),
                     false, false);

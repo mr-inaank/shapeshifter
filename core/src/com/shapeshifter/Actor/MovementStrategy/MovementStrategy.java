@@ -8,6 +8,6 @@ import com.shapeshifter.GameWorld;
 public interface MovementStrategy {
 
     public float getNewSpeed();
-    public float getNewAngularSpeed();
+    public double getNewAngularSpeed();
 
 }

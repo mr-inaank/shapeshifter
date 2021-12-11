@@ -2,6 +2,8 @@ package com.shapeshifter.Actor.State;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.shapeshifter.Actor.Actor;
+import com.shapeshifter.Actor.MovementStrategy.DriftMovementStrategy;
+import com.shapeshifter.Actor.MovementStrategy.FollowMovementStrategy;
 import com.shapeshifter.Actor.MovementStrategy.MovementStrategy;
 
 public class AttackingState extends State{
@@ -42,16 +44,33 @@ public class AttackingState extends State{
 
     public AttackingState(Actor source, MovementStrategy movestrat) {
         this.movestrat = movestrat;
+        this.source = source;
         source.setMaxSpeed(0);
         source.setMaxAngularSpeed(10);
         source.setTexture(new Texture("triangle_hold.png"));
 
     }
 
+    private void charge() {
+        source.setTexture(new Texture("triangle_charge.png"));
+        source.setMaxSpeed(40);
+        source.setMaxAngularSpeed(0);
+        this.movestrat = new DriftMovementStrategy(source);
+    }
+
+    private void slow() {
+        source.setTexture(new Texture("triangle_slow.png"));
+        source.setMaxSpeed(20);
+        source.setMaxAngularSpeed(5);
+        this.movestrat = new DriftMovementStrategy(source);
+        //I want to let them go back to searching state while still having the slow debuff. But only the tick here can check for that
+        //Idea: make tick abstract only, and just have if statement for whether it is attacking/slow or something, with attributes as needed
+    }
 
     @Override
     public void tick() {
         super.tick();
-
+        if (duration > 90 && movestrat.getClass() != DriftMovementStrategy.class) charge();
+        if (duration > 150 && movestrat.getClass() != FollowMovementStrategy.class) slow();
     }
 }

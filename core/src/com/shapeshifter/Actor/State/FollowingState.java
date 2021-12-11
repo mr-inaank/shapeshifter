@@ -26,11 +26,11 @@ public class FollowingState extends State {
 
         //if lost sight, go back to searching
         if (distance > 800000) {
-            //source.setState(new SearchingState(source));
+            source.setState(new SearchingState(source));
         }
         //if very close, go into attack
         if (distance < 50000) {
-            //source.setState(new AttackingState(source, movestrat));
+            source.setState(new AttackingState(source, movestrat));
         }
     }
 }
