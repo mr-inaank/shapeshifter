@@ -9,6 +9,8 @@ import com.shapeshifter.Actor.Triangle;
 
 import javax.sound.midi.SysexMessage;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public enum GameWorld {
     INSTANCE;
@@ -44,6 +46,10 @@ public enum GameWorld {
             i.move();
             i.collide();
         }
+    }
+
+    public List<Actor> getNearbyActors(Actor source) {
+        return Arrays.asList(source);
     }
 
 }
