@@ -1,5 +1,6 @@
 package com.shapeshifter;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.shapeshifter.Actor.Actor;
 import com.shapeshifter.Actor.Circle;
@@ -29,11 +30,13 @@ public enum GameWorld {
     public void testSpawns() {
         player = new Circle();
         player.setState(new UserState(player));
+        player.setFaction(0);
         actors.add(player);
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1; i++) {
             Actor newActor = new Triangle();
             newActor.setState(new SearchingState(newActor));
+            newActor.setFaction(1);
             actors.add(newActor);
         }
 
@@ -42,14 +45,24 @@ public enum GameWorld {
     public void gameLoop() {
         for (Actor i : actors) {
             i.updateState();
+        }
+        for (Actor i : actors) {
             i.aim();
             i.move();
             i.collide();
+            System.out.println(Gdx.graphics.getFramesPerSecond());
         }
     }
 
     public List<Actor> getNearbyActors(Actor source) {
-        return Arrays.asList(source);
+        List<Actor> nearby = new ArrayList<Actor>();
+        for (Actor i : actors) {
+            double distance = Math.pow((i.getPosX() - source.getPosX()), 2) + Math.pow((i.getPosY() - source.getPosY()), 2);
+            if (distance < 600000) {
+                if (i != source) nearby.add(i);
+            }
+        }
+        return nearby;
     }
 
 }

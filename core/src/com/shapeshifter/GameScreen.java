@@ -59,7 +59,7 @@ public class GameScreen extends ScreenAdapter {
         batch.draw(gameworld.background, 0, 0, 1920*5, 1080*5);
         for (Actor i : gameworld.actors) {
             batch.draw(i.getTexture(),
-                    i.getPosX(), i.getPosY(),
+                    i.getPosX() - i.getTexture().getWidth()/2, i.getPosY() - i.getTexture().getHeight()/2,
                     i.getTexture().getWidth()/2, i.getTexture().getHeight()/2,
                     i.getTexture().getWidth(), i.getTexture().getHeight(),
                     0.8f, 0.8f,

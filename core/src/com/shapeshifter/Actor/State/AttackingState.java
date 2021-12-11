@@ -43,6 +43,7 @@ public class AttackingState extends State{
     public AttackingState(Actor source, MovementStrategy movestrat) {
         this.movestrat = movestrat;
         source.setMaxSpeed(0);
+        source.setMaxAngularSpeed(10);
         source.setTexture(new Texture("triangle_hold.png"));
 
     }

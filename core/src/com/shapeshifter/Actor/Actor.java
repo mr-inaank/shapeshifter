@@ -21,6 +21,7 @@ public abstract class Actor {
     protected Texture texture;
 
     //Behaviour
+    private int faction;
     private State state;
 
     //RNG
@@ -43,6 +44,7 @@ public abstract class Actor {
     public void move() {
         if (speed > maxSpeed) speed = maxSpeed;
         if (angularSpeed > maxAngularSpeed) angularSpeed = maxAngularSpeed;
+        if (angularSpeed < -maxAngularSpeed) angularSpeed = -maxAngularSpeed;
 
         posX += speed * Math.cos(this.rotation * (Math.PI / 180));
         posY += speed * Math.sin(this.rotation * (Math.PI / 180));
@@ -112,10 +114,18 @@ public abstract class Actor {
         return texture;
     }
 
+    public int getFaction() {
+        return faction;
+    }
+
 
     //Setters
     public void setState(State state) {
         this.state = state;
+    }
+
+    public void setFaction(int faction) {
+        this.faction = faction;
     }
 
     public void setTexture(Texture texture) {

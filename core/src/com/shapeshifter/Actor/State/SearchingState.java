@@ -5,6 +5,7 @@ import com.shapeshifter.Actor.MovementStrategy.DriftMovementStrategy;
 import com.shapeshifter.Actor.MovementStrategy.FollowMovementStrategy;
 import com.shapeshifter.GameWorld;
 
+import java.util.List;
 import java.util.Random;
 
 public class SearchingState extends State{
@@ -20,8 +21,12 @@ public class SearchingState extends State{
         super.tick();
         //check if there is an enemy in vision
         //if there is, change state to following and pass in the target
-        if (true) {
-            source.setState(new FollowingState(source, GameWorld.INSTANCE.player));
+
+        List<Actor> inVision = GameWorld.INSTANCE.getNearbyActors(source);
+        for (Actor i : inVision) {
+            if (i.getFaction() != source.getFaction()) {
+                source.setState(new FollowingState(source, i));
+            }
         }
 
     }

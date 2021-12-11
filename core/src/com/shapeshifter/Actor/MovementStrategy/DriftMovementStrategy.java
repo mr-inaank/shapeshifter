@@ -17,6 +17,6 @@ public class DriftMovementStrategy implements MovementStrategy{
 
     @Override
     public float getNewAngularSpeed() {
-        return source.getAngularSpeed();
+        return 0;
     }
 }
